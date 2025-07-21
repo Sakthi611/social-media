@@ -5,7 +5,18 @@ const userProfile = require("../model/userProfile")
 const getController = async (req, res) => {
     try {
         const user = await userProfile.find();
-        res.status(200).json(user);
+        if(!user){
+            return res.status(400).json({
+                success:false,
+                message:"No User Found"
+            })
+        }
+        res.status(200).json({
+            success:true,
+            message:"Profile Found Successfully",
+            user:user
+        })
+        
     }
     catch (error) {
         res.status(400).json(
