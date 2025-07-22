@@ -6,7 +6,8 @@ const {
     getFollowerById,
     createFollower,
     updateFollower,
-    removeFollower
+    removeFollower,
+    removeAllFollowers
 }=require('../controller/FollowerController.js');
 const router=express.Router();
 
@@ -15,5 +16,6 @@ router.get('/followers/:id',getFollowerById);
 router.post('/followers',createFollower);
 router.put('/followers/:id',updateFollower);
 router.delete('/followers/:id',removeFollower);
+router.delete('/followers/deleteAll',removeAllFollowers);
 
 module.exports=router;

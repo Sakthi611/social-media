@@ -25,7 +25,29 @@ const getController=async(req,res) =>{
     }
 
 }
-
+const getControllerById=async(req,res)=>{
+    try{
+        const user=await Suggestions.findById(req.params.id);
+        if(!user){
+            return res.status(400).json({
+                success:false,
+                message:"No user Found with this ID"
+            })
+        }
+        res.status(200).json({
+            success:true,
+            message:"User Created Successfully",
+            user:user
+        })
+    }
+    catch(error){
+        console.log(error);
+        res.status(500).json({
+            success:false,
+            message:"Something Went Wrong"
+        })
+    }
+}
 
 const postController=async(req,res)=>{
     try{
@@ -85,4 +107,5 @@ module.exports={
     getController,
     postController,
     putController,
+    getControllerById
 }

@@ -59,7 +59,7 @@ const putController = async (req, res) => {
     try {
 
         const { name, profilePicture } = req.body;
-        const updateUser = await userProfile.findByIdAndUpdate(req.params.id,
+        const updateUser = await userProfile.findByIdAndUpdate(req.params._id,
             { name, profilePicture },
             { new: true });
         if (!updateUser) {

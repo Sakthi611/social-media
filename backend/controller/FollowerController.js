@@ -46,39 +46,47 @@ const getFollowerById=async(req,res)=>{
     }
 }
 
-const createFollower=async(req,res)=>{
-    try{
-        const{id,username,profile_pic}=req.body;
-        const newFollower=await Followers.create({
-            id,
-            username, profile_pic
-        })
-        const savedFollower=await newFollower.save();
-        if(!savedFollower){
-            return res.status(400).json({
-                success:false,
-                message:"Follower Not Created"
-            });
-        }
-        res.status(200).json({
-            success:true,
-            message:"Follower Created Successfully",
-            follower:savedFollower
-        })
+const createFollower = async (req, res) => {
+  console.log("BODY RECEIVED:", req.body); // 👈 Add this line
+
+  try {
+    const { username, profile_pic } = req.body;
+
+    if (!username || !profile_pic) {
+      return res.status(400).json({
+        success: false,
+        message: "Username and profile_pic are required",
+      });
     }
-    catch(error){
-        res.status(500).json({
-            success:false,
-            message:"Something Went Wrong"
-        })
+
+    const newFollower = await Followers.create({ username, profile_pic });
+    const savedFollower = await newFollower.save();
+
+    if (!savedFollower) {
+      return res.status(400).json({
+        success: false,
+        message: "Follower Not Created",
+      });
     }
-}
+
+    res.status(200).json({
+      success: true,
+      message: "Follower Created Successfully",
+      follower: savedFollower,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      success: false,
+      message: "Something Went Wrong",
+    });
+  }
+};
 
 const updateFollower=async(req,res)=>{
     try{
-        const {id,username,profile_pic}=req.body;
-        const updatedFollower=await Followers.findByIdAndUpdate({
-            id,
+        const {username,profile_pic}=req.body;
+        const updatedFollower=await Followers.findByIdAndUpdate(req.params.id,{
             username,
             profile_pic
         },

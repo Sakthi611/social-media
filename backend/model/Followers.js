@@ -2,10 +2,7 @@
 const  mongoose =require("mongoose");
 
 const FollowerSchema=mongoose.Schema({
-    id:{
-        type:Number,
-        required:true
-    },
+    
     username:{
         type:String,
         required:true,

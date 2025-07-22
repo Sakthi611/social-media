@@ -21,6 +21,7 @@ app.use(cors({
 
 //middleware
 app.use(express.json());
+
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/assets',express.static(path.join(__dirname,'assets')));
