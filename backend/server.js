@@ -5,9 +5,11 @@ const userRouter=require('./routes/userProfileRoutes')
 const suggestionRouter=require('./routes/SuggestionsRoutes');
 const postRouter=require('./routes/PostsRoutes')
 const storyRouter=require('./routes/StoryRoutes')
+const followerRouter=require('./routes/FollowerRoutes');
 const cors=require("cors");
 const app=express();
 const path=require('path')
+
 
 const port=3002;
 
@@ -31,6 +33,8 @@ app.use('/api',suggestionRouter);
 app.use('/api',postRouter);
 
 app.use('/api',storyRouter);
+
+app.use('/api',followerRouter);
 
 // Basic route for testing
 app.get('/', (req, res) => {

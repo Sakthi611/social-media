@@ -7,8 +7,10 @@ import { MdPlayCircleOutline } from "react-icons/md";
 import { PiMessengerLogo } from "react-icons/pi";
 import { FaRegCompass } from "react-icons/fa";
 import { IoReorderThreeOutline } from "react-icons/io5"
+import {useNavigate} from 'react-router'
 
 const SideBar = () => {
+    const navigate=useNavigate();
   return (
 
     <div className="fixed  h-screen w-[17%]  bg-cover bg-white border-r border-gray-200">
@@ -59,8 +61,8 @@ const SideBar = () => {
             <span>Create</span>
           </div>
 
-          <div className="flex items-center gap-4 px-2 py-1 hover:bg-gray-100 rounded-lg cursor-pointer">
-            <CgProfile className="text-2xl" />
+          <div className="flex items-center gap-4 px-2 py-1 hover:bg-gray-100 rounded-lg cursor-pointer "  onClick={()=>navigate('/profile')} >
+            <CgProfile className="text-2xl"/>
             <span>Profile</span>
           </div>
 

@@ -7,8 +7,8 @@ const Suggestions = () => {
   useEffect(() => {
     axios.get('http://localhost:3002/api/profile')
       .then(res => {
-        setProfile(res.data);
-        console.log("Fetched Data: ", res.data);
+        setProfile(res.data.user);
+        console.log("Fetched Data: ", res.data.user);
       })
       .catch(error => console.log("Error fetching profile:", error));
 
