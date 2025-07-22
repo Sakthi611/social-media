@@ -9,7 +9,7 @@ const userProfileSchema=new mongoose.Schema(
         },
         profilePicture:{
             type:String,
-            default:"assets/profilePicture.jpeg",
+            default:"assets/defaultImage.jpeg",
             
             
         },

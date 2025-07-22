@@ -48,7 +48,7 @@ const getFollowerById=async(req,res)=>{
 
 const createFollower=async(req,res)=>{
     try{
-        const{id,username,profile_pic}=req.body;l
+        const{id,username,profile_pic}=req.body;
         const newFollower=await Followers.create({
             id,
             username, profile_pic

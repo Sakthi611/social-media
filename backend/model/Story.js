@@ -19,11 +19,13 @@ const StorySchema=mongoose.Schema({
         profile_pic:{
             type:String,
             required:true,
+            default:"assets/defaultImage.jpeg"
         }
     },
     image:{
         type:String,
         required:true,
+        
     },
     caption:{
         type:String

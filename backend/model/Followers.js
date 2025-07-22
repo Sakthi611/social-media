@@ -12,7 +12,7 @@ const FollowerSchema=mongoose.Schema({
     },
     profile_pic:{
         type:String,
-        default:"",
+        default:"assets/defaultImage.jpeg",
     }
 })
 

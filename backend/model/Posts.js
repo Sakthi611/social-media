@@ -13,11 +13,13 @@ const postSchema = new mongoose.Schema({
         profile_pic: {
             type: String,
             required: true,
+            default:"assets/defaultImage.jpeg"
         },
     },
     image: {
         type: String,
         required: true,
+        default:"assets/defaultImage.jpeg"
     },
     caption: {
         type: String,

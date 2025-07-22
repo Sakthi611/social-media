@@ -14,7 +14,7 @@ const Suggestions=mongoose.Schema({
     },
     profilePicture:{
         type:String,
-        default:"",
+        default:"assets/defaultImage.jpeg",
         requied:true
     }
     
