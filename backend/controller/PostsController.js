@@ -3,7 +3,7 @@
 const Posts=require('../model/Posts');
 
 
-const getController=async(req,res)=>{
+const getPosts=async(req,res)=>{
     try{
         const post=await Posts.find();
         if(!post){
@@ -26,7 +26,7 @@ const getController=async(req,res)=>{
     }
 }
 
-const postController=async(req,res)=>{
+const createPost=async(req,res)=>{
     try{
         const {user,image,caption,likes,comments}=req.body;
         if(!user || !image  ){
@@ -65,7 +65,7 @@ const postController=async(req,res)=>{
     }
 }
 
-const putController=async(req,res)=>{
+const updatePost=async(req,res)=>{
     try{
         const {image,caption}=req.body;
         const postId=req.params._id;
@@ -95,7 +95,7 @@ const putController=async(req,res)=>{
     }
 }
 
-const deleteController=async(req,res)=>{
+const deletePost=async(req,res)=>{
     try{
         const postId=req.params._id;
         const deletePost=await Posts.findByIdAndDelete(postId);
@@ -120,8 +120,9 @@ const deleteController=async(req,res)=>{
 }
 
 module.exports={
-    getController,
-    postController,
-    putController,
-    deleteController
+   getPosts,
+   createPost,
+   updatePost,
+   deletePost
+ 
 }
