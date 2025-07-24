@@ -3,24 +3,24 @@
 const express=require("express");
 
 const {
-    getController,
-    postController,
-    putController,
-    deleteController,
-    getControllerById,
-    deleteAllController
+    getAllStories,
+    createStory,
+    updateStory,
+    deleteStory,
+    getStoryById,
+    removeAllStories
 }=require('../controller/StoryController');
 
 
 const router=express.Router();
 
 
-router.get('/story',getController);
-router.post('/story',postController);
-router.put('/story/:_id',putController);
-router.delete('/story/deleteAll',deleteAllController);
-router.delete('/story/:_id',deleteController);
-router.get('/story/:id',getControllerById);
+router.get('/story',getAllStories);
+router.post('/story',createStory);
+router.put('/story/:_id',updateStory);
+router.delete('/story/deleteAll',removeAllStories);
+router.delete('/story/:_id',deleteStory);
+router.get('/story/:id',getStoryById);
 
 
 

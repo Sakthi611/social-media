@@ -2,7 +2,7 @@ const Suggestions = require("../model/Suggestions")
 
 
 
-const getController=async(req,res) =>{
+const getAllSuggestions=async(req,res) =>{
     try{
         const user=await Suggestions.find();
         if(!user){
@@ -25,7 +25,7 @@ const getController=async(req,res) =>{
     }
 
 }
-const getControllerById=async(req,res)=>{
+const getSuggById=async(req,res)=>{
     try{
         const user=await Suggestions.findById(req.params.id);
         if(!user){
@@ -49,7 +49,7 @@ const getControllerById=async(req,res)=>{
     }
 }
 
-const postController=async(req,res)=>{
+const createSuggestion=async(req,res)=>{
     try{
         const user=new Suggestions({
             id:req.body.id,
@@ -78,7 +78,7 @@ const postController=async(req,res)=>{
     }
 }
 
-const putController=async(req,res)=>{
+const updateSuggestion=async(req,res)=>{
     try{
         
         const {name,profilePicture}=req.body;
@@ -104,8 +104,8 @@ const putController=async(req,res)=>{
     }
 }
 module.exports={
-    getController,
-    postController,
-    putController,
-    getControllerById
+    getAllSuggestions,
+    createSuggestion,
+    updateSuggestion,
+    getSuggById
 }

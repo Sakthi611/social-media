@@ -2,7 +2,7 @@ const userProfile = require("../model/userProfile")
 
 
 
-const getController = async (req, res) => {
+const getAllUser = async (req, res) => {
     try {
         const user = await userProfile.find();
         if(!user){
@@ -30,7 +30,7 @@ const getController = async (req, res) => {
 }
 
 
-const getControllerById = async (req, res) => {
+const getUserById = async (req, res) => {
     try {
         const user = await userProfile.findById(req.params.id);
         if (!user) {
@@ -55,7 +55,7 @@ const getControllerById = async (req, res) => {
 }
 
 
-const putController = async (req, res) => {
+const updateUser = async (req, res) => {
     try {
 
         const { name, profilePicture } = req.body;
@@ -101,8 +101,8 @@ const createUser = async (req, res) => {
 // createUser();
 
 module.exports = {
-    getController,
-    getControllerById,
-    putController,
+    getAllUser,
+    getUserById,
+    updateUser,
     createUser
 }

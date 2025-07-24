@@ -1,20 +1,20 @@
 
 const{
-    getController,
-    postController,
-    putController,
-    getControllerById
+    getAllSuggestions,
+    createSuggestion,
+    updateSuggestion,
+    getSuggById,
 }=require('../controller/SuggController')
 const express=require("express");
-// const { getControllerById } = require('../controller/userProfileController');
+
 
 const router=express.Router();
 
 
-router.get('/suggestions',getController);
-router.get('/suggestions/:id',getControllerById);
-router.post('/suggestions',postController);
-router.put('/suggestions/:_id',putController);
+router.get('/suggestions',getAllSuggestions);
+router.get('/suggestions/:id',getSuggById);
+router.post('/suggestions',createSuggestion);
+router.put('/suggestions/:_id',updateSuggestion);
 
 
 module.exports=router;

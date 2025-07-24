@@ -2,7 +2,7 @@ const  Story = require("../model/Story");
 
 
 
-const getController=async(req,res)=>{
+const getAllStories=async(req,res)=>{
     try{
         const story=await Story.find();
         if(!story){
@@ -26,7 +26,7 @@ const getController=async(req,res)=>{
     }
 }
 
-const getControllerById=async(req,res)=>{
+const getStoryById=async(req,res)=>{
     try{
         const story=await Story.findOne({id:Number(req.params.id)});
         if(!story){
@@ -50,7 +50,7 @@ const getControllerById=async(req,res)=>{
     }
 }
 
-const postController=async(req,res)=>{
+const createStory=async(req,res)=>{
     try{
         const {id,user,image,caption}=req.body;
         const newStory=new Story({
@@ -85,7 +85,7 @@ const postController=async(req,res)=>{
 
 
 
-const putController=async(req,res)=>{
+const updateStory=async(req,res)=>{
     try{
         const {image,caption,user}=req.body;
         const updateStory=await Story.findByIdAndUpdate(req.params._id,{
@@ -114,7 +114,7 @@ const putController=async(req,res)=>{
     }
 }
 
-const deleteController=async(req,res)=>{
+const deleteStory=async(req,res)=>{
     try{
         const deleted=await Story.findByIdAndDelete(req.params._id);
         if(!deleted){
@@ -138,7 +138,7 @@ const deleteController=async(req,res)=>{
     }
 }
 
-const deleteAllController=async(req,res)=>{
+const removeAllStories=async(req,res)=>{
     try{
         const deleted =await Story.deleteMany();
         if(deleted.deletedCount===0){
@@ -162,10 +162,10 @@ const deleteAllController=async(req,res)=>{
 }
 
 module.exports={
-    getController,
-    postController,
-    putController,
-    deleteController,
-    getControllerById,
-    deleteAllController
+    getAllStories,
+    createStory,
+    updateStory,
+    deleteStory,
+    getStoryById,
+    removeAllStories
 }
