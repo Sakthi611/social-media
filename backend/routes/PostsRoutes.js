@@ -4,7 +4,8 @@ const {
     getPosts,
     createPost,
     updatePost,
-    deletePost
+    deletePost,
+    updateLikes
 }=require('../controller/PostsController')
 
 
@@ -14,5 +15,6 @@ router.get('/posts',getPosts);
 router.post('/posts',createPost);
 router.put('/posts/:_id',updatePost);
 router.delete('/posts/:_id',deletePost);
+router.put('/posts/likes/:_id',updateLikes)
 
 module.exports=router;

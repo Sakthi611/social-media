@@ -119,10 +119,39 @@ const deletePost=async(req,res)=>{
     }
 }
 
+const updateLikes=async(req,res)=>{
+    try{
+        const {likes}=req.body;
+        const postId=req.params._id;
+        const updatePost=await Posts.findByIdAndUpdate(postId,{
+            likes
+        },{
+            new:true
+        })
+        if(!updatePost){
+            return res.status(400).json({
+                success:false,
+                message:"Likes not Updated"
+            })
+        }
+        res.status(200).json({
+            success:true,
+            message:"Likes Updated Successfully",
+            post:updatePost
+        })
+        }
+    catch(error){
+        res.status(500).json({
+            success:false,
+            message:"Something went Wrong"
+        })
+    }
+}
 module.exports={
    getPosts,
    createPost,
    updatePost,
-   deletePost
+   deletePost,
+   updateLikes
  
 }

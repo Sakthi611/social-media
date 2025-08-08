@@ -1,6 +1,8 @@
-
+require('dotenv').config();
 const express=require("express");
 const connectDB = require("./config/db");
+const authRouter=require('./routes/auth/auth-routes');
+const homeRouter=require('./routes/auth/homeRoutes');
 const userRouter=require('./routes/userProfileRoutes')
 const suggestionRouter=require('./routes/SuggestionsRoutes');
 const postRouter=require('./routes/PostsRoutes')
@@ -26,6 +28,12 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/assets',express.static(path.join(__dirname,'assets')));
 
+
+// auth routes
+
+app.use('/auth',authRouter);
+
+app.use('/api/home',homeRouter);
 // Mount the router
 app.use('/api',userRouter);
 
